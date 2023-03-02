@@ -21,7 +21,7 @@ struct Daily_Calorie_Tracker_Plus_App: App {
 
     // MARK: - Locals
 
-    private let persistenceManager = CoreDataStack(isCloud: true)
+    private let coreDataStack = CoreDataStack(isCloud: true)
 
     @AppStorage(colorSchemeModeKey) var colorSchemeMode: ColorSchemeMode = .automatic
 
@@ -35,14 +35,14 @@ struct Daily_Calorie_Tracker_Plus_App: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.managedObjectContext, persistenceManager.container.viewContext)
-                .environmentObject(persistenceManager)
+                .environment(\.managedObjectContext, coreDataStack.container.viewContext)
+                .environmentObject(coreDataStack)
                 .preferredColorScheme(colorSchemeMode.colorScheme)
         }
         .onChange(of: scenePhase) { _ in
             // save if: (1) app moved to background, and (2) changes are pending
             do {
-                try persistenceManager.container.viewContext.save()
+                try coreDataStack.container.viewContext.save()
             } catch {
                 logger.error("\(#function): \(error.localizedDescription)")
             }
