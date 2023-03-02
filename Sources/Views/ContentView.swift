@@ -37,7 +37,7 @@ struct ContentView: View {
     var body: some View {
         TabView(selection: $selectedTab) {
             NavStack(navData: $categoryNavData, destination: destination) {
-                CategoryList()
+                CategoryList(onShortcut: shortcutAction)
             }
             .tabItem {
                 Label("Categories", systemImage: "carrot")
@@ -87,6 +87,17 @@ struct ContentView: View {
             ServingRunList(zDayRun: zDayRun, archiveStore: archiveStore)
         } else {
             Text("Serving Run not available.")
+        }
+    }
+
+    // MARK: - Actions
+
+    private func shortcutAction() {
+        // in case app is started via shortcut, force the first tab
+
+        // NOTE: trying an explicit time delay, as it didn't switch the first time I tested.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            selectedTab = Tabs.categories.rawValue
         }
     }
 }
