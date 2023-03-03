@@ -45,7 +45,8 @@ struct ContentView: View {
             .tag(Tabs.categories.rawValue)
 
             NavStack(navData: $historyNavData,
-                     destination: destination) {
+                     destination: destination)
+            {
                 HistoryView()
             }
             .tabItem {
@@ -81,7 +82,7 @@ struct ContentView: View {
     // NOTE that this is to access servingRun in Archive Store (not Main Store!)
     @ViewBuilder
     private func servingRunList(_ dayRunUri: URL) -> some View {
-        if let zDayRun = ZDayRun.get(viewContext, forURIRepresentation: dayRunUri),
+        if let zDayRun: ZDayRun = ZDayRun.get(viewContext, forURIRepresentation: dayRunUri),
            let archiveStore = manager.getArchiveStore(viewContext)
         {
             ServingRunList(zDayRun: zDayRun, archiveStore: archiveStore)
