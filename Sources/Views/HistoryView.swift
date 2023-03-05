@@ -35,7 +35,7 @@ struct HistoryView: View {
 
     var body: some View {
         if let archiveStore = manager.getArchiveStore(viewContext) {
-            ConsumedList(archiveStore: archiveStore)
+            DayRunList(archiveStore: archiveStore)
                 .toolbar {
                     ToolbarItem(placement: .destructiveAction) {
                         Button(action: {

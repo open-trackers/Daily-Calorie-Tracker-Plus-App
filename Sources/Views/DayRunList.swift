@@ -1,5 +1,5 @@
 //
-//  CategoryRunList.swift
+//  DayRunList.swift
 //
 // Copyright 2023  OpenAlloc LLC
 //
@@ -21,7 +21,7 @@ import DcaltUI
 import TrackerLib
 import TrackerUI
 
-struct ConsumedList: View {
+struct DayRunList: View {
     @Environment(\.requestReview) private var requestReview
     @Environment(\.verticalSizeClass) private var verticalSizeClass
     @Environment(\.colorScheme) private var colorScheme
@@ -35,19 +35,21 @@ struct ConsumedList: View {
     // MARK: - Parameters
 
     internal init(archiveStore: NSPersistentStore) {
+        let predicate = NSPredicate(format: "userRemoved == %@", NSNumber(value: false))
         let sortDescriptors = [NSSortDescriptor(keyPath: \ZDayRun.consumedDay, ascending: false)]
         let request = makeRequest(ZDayRun.self,
+                                  predicate: predicate,
                                   sortDescriptors: sortDescriptors,
                                   inStore: archiveStore)
-        _days = FetchRequest<ZDayRun>(fetchRequest: request)
+        _dayRuns = FetchRequest<ZDayRun>(fetchRequest: request)
     }
 
     // MARK: - Locals
 
-    @FetchRequest private var days: FetchedResults<ZDayRun>
+    @FetchRequest private var dayRuns: FetchedResults<ZDayRun>
 
     private let logger = Logger(subsystem: Bundle.main.bundleIdentifier!,
-                                category: String(describing: ConsumedList.self))
+                                category: String(describing: DayRunList.self))
 
     private let columnSpacing: CGFloat = 10
 
@@ -65,7 +67,7 @@ struct ConsumedList: View {
 
     private var listConfig: TablerListConfig<ZDayRun> {
         TablerListConfig<ZDayRun>(
-            onDelete: deleteAction
+            onDelete: userRemoveAction
         )
     }
 
@@ -74,12 +76,6 @@ struct ConsumedList: View {
         GridItem(.flexible(minimum: 70), spacing: columnSpacing, alignment: .leading),
     ] }
 
-    // private let tc = NumberCompactor(ifZero: "", roundSmallToWhole: false)
-
-    // support for app review prompt
-//    @SceneStorage("has-been-prompted-for-app-review") private var hasBeenPromptedForAppReview = false
-//    private let minimumRunsForAppReviewAlert = 15
-
     // MARK: - Views
 
     var body: some View {
@@ -87,7 +83,7 @@ struct ConsumedList: View {
                    header: header,
                    row: listRow,
                    rowBackground: rowBackground,
-                   results: days)
+                   results: dayRuns)
             .listStyle(.plain)
     }
 
@@ -130,17 +126,34 @@ struct ConsumedList: View {
         router.path.append(DcaltRoute.dayRunDetail(zDayRun.uriRepresentation))
     }
 
-    private func deleteAction(at offsets: IndexSet) {
-        // NOTE: removing specified zDayRun records, where present, from both mainStore and archiveStore.
+//    private func deleteAction(at offsets: IndexSet) {
+//        // NOTE: removing specified zDayRun records, where present, from both mainStore and archiveStore.
+//
+//        do {
+//            for index in offsets {
+//                let element = days[index]
+//
+//                guard let consumedDay = element.consumedDay
+//                else { continue }
+//
+//                try ZDayRun.delete(viewContext, consumedDay: consumedDay, inStore: nil)
+//            }
+//
+//            try viewContext.save()
+//        } catch {
+//            logger.error("\(#function): \(error.localizedDescription)")
+//        }
+//    }
 
+    // NOTE: 'removes' matching records, where present, from both mainStore and archiveStore.
+    private func userRemoveAction(at offsets: IndexSet) {
         do {
             for index in offsets {
-                let element = days[index]
-
-                guard let consumedDay = element.consumedDay
+                let zDayRun = dayRuns[index]
+                guard let consumedDay = zDayRun.consumedDay
                 else { continue }
 
-                try ZDayRun.delete(viewContext, consumedDay: consumedDay, inStore: nil)
+                try ZDayRun.userRemove(viewContext, consumedDay: consumedDay)
             }
 
             try viewContext.save()
@@ -169,7 +182,7 @@ struct ConsumedList_Previews: PreviewProvider {
         try? ctx.save()
 
         return NavigationStack {
-            ConsumedList(archiveStore: archiveStore)
+            DayRunList(archiveStore: archiveStore)
                 .environment(\.managedObjectContext, ctx)
                 .environmentObject(manager)
         }

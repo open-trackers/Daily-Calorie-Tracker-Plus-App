@@ -20,7 +20,7 @@
 		40A39ED42990550100A31B8C /* Compactor in Frameworks */ = {isa = PBXBuildFile; productRef = 40A39ED32990550100A31B8C /* Compactor */; };
 		40A39EDA2990556A00A31B8C /* DcaltUI in Frameworks */ = {isa = PBXBuildFile; productRef = 40A39ED92990556A00A31B8C /* DcaltUI */; };
 		40A39EDD2990582900A31B8C /* DcaltLib in Frameworks */ = {isa = PBXBuildFile; productRef = 40A39EDC2990582900A31B8C /* DcaltLib */; };
-		40A9158529974320007D684B /* ConsumedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A9158429974320007D684B /* ConsumedList.swift */; };
+		40A9158529974320007D684B /* DayRunList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A9158429974320007D684B /* DayRunList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +34,7 @@
 		40783925299052E900F4C956 /* App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = App.entitlements; sourceTree = "<group>"; };
 		40783927299052E900F4C956 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		40A39EDB2990559A00A31B8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		40A9158429974320007D684B /* ConsumedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumedList.swift; sourceTree = "<group>"; };
+		40A9158429974320007D684B /* DayRunList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRunList.swift; sourceTree = "<group>"; };
 		40F263B929AFF04000CAA9A2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		40F263BB29B0204B00CAA9A2 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,7 +102,7 @@
 				40783921299052E800F4C956 /* ContentView.swift */,
 				401CEA542990AAE400D5303F /* PhoneSettingsForm.swift */,
 				401CEA562990B21600D5303F /* HistoryView.swift */,
-				40A9158429974320007D684B /* ConsumedList.swift */,
+				40A9158429974320007D684B /* DayRunList.swift */,
 				4058C21529995E4200A1088A /* ServingRunList.swift */,
 			);
 			path = Views;
@@ -201,7 +201,7 @@
 				4078391B299052E800F4C956 /* PlusApp.swift in Sources */,
 				401CEA572990B21600D5303F /* HistoryView.swift in Sources */,
 				4058C21629995E4200A1088A /* ServingRunList.swift in Sources */,
-				40A9158529974320007D684B /* ConsumedList.swift in Sources */,
+				40A9158529974320007D684B /* DayRunList.swift in Sources */,
 				40783922299052E800F4C956 /* ContentView.swift in Sources */,
 				401CEA552990AAE400D5303F /* PhoneSettingsForm.swift in Sources */,
 			);
