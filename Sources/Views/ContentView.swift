@@ -37,7 +37,7 @@ struct ContentView: View {
     var body: some View {
         TabView(selection: $selectedTab) {
             NavStack(navData: $categoryNavData, destination: destination) {
-                CategoryList(onShortcut: shortcutAction)
+                CategoryList()
             }
             .tabItem {
                 Label("Categories", systemImage: "carrot")
@@ -62,6 +62,10 @@ struct ContentView: View {
             }
             .tag(Tabs.settings.rawValue)
         }
+        .onContinueUserActivity(categoryQuickLogActivityType,
+                                perform: categoryQuickLogContinueUserActivity)
+        .onContinueUserActivity(categoryServingLogActivityType,
+                                perform: categoryServingLogContinueUserActivity)
     }
 
     // handle routes for iOS-specific views here
@@ -91,14 +95,51 @@ struct ContentView: View {
         }
     }
 
-    // MARK: - Actions
+    // MARK: - User Activity
 
-    private func shortcutAction() {
-        // in case app is started via shortcut, force the first tab
+    private func categoryQuickLogContinueUserActivity(_ userActivity: NSUserActivity) {
+        logger.notice("\(#function)")
 
-        // NOTE: trying an explicit time delay, as it didn't switch the first time I tested.
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        DispatchQueue.main.async {
             selectedTab = Tabs.categories.rawValue
+
+            guard let categoryURI = userActivity.userInfo?[userActivity_uriRepKey] as? URL,
+                  let category = MCategory.get(viewContext, forURIRepresentation: categoryURI) as? MCategory,
+                  !category.isDeleted,
+                  category.archiveID != nil
+            else {
+                logger.notice("\(#function): unable to continue User Activity")
+                return
+            }
+
+            logger.notice("\(#function): on category=\(category.wrappedName)")
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                NotificationCenter.default.post(name: .logCategory, object: categoryURI)
+            }
+        }
+    }
+
+    private func categoryServingLogContinueUserActivity(_ userActivity: NSUserActivity) {
+        logger.notice("\(#function)")
+
+        DispatchQueue.main.async {
+            selectedTab = Tabs.categories.rawValue
+
+            guard let servingURI = userActivity.userInfo?[userActivity_uriRepKey] as? URL,
+                  let serving = MServing.get(viewContext, forURIRepresentation: servingURI) as? MServing,
+                  !serving.isDeleted,
+                  serving.archiveID != nil
+            else {
+                logger.notice("\(#function): unable to continue User Activity")
+                return
+            }
+
+            logger.notice("\(#function): on serving=\(serving.wrappedName)")
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                NotificationCenter.default.post(name: .logServing, object: servingURI)
+            }
         }
     }
 }
