@@ -62,10 +62,14 @@ struct ContentView: View {
             }
             .tag(Tabs.settings.rawValue)
         }
-        .onContinueUserActivity(categoryQuickLogActivityType,
-                                perform: categoryQuickLogContinueUserActivity)
-        .onContinueUserActivity(categoryServingLogActivityType,
-                                perform: categoryServingLogContinueUserActivity)
+        .onContinueUserActivity(logCategoryActivityType) {
+            selectedTab = Tabs.categories.rawValue
+            handleLogCategoryUA(viewContext, $0)
+        }
+        .onContinueUserActivity(logServingActivityType) {
+            selectedTab = Tabs.categories.rawValue
+            handleLogServingUA(viewContext, $0)
+        }
     }
 
     // handle routes for iOS-specific views here
@@ -92,54 +96,6 @@ struct ContentView: View {
             ServingRunList(zDayRun: zDayRun, archiveStore: archiveStore)
         } else {
             Text("Serving Run not available.")
-        }
-    }
-
-    // MARK: - User Activity
-
-    private func categoryQuickLogContinueUserActivity(_ userActivity: NSUserActivity) {
-        logger.notice("\(#function)")
-
-        DispatchQueue.main.async {
-            selectedTab = Tabs.categories.rawValue
-
-            guard let categoryURI = userActivity.userInfo?[userActivity_uriRepKey] as? URL,
-                  let category = MCategory.get(viewContext, forURIRepresentation: categoryURI) as? MCategory,
-                  !category.isDeleted,
-                  category.archiveID != nil
-            else {
-                logger.notice("\(#function): unable to continue User Activity")
-                return
-            }
-
-            logger.notice("\(#function): on category=\(category.wrappedName)")
-
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                NotificationCenter.default.post(name: .logCategory, object: categoryURI)
-            }
-        }
-    }
-
-    private func categoryServingLogContinueUserActivity(_ userActivity: NSUserActivity) {
-        logger.notice("\(#function)")
-
-        DispatchQueue.main.async {
-            selectedTab = Tabs.categories.rawValue
-
-            guard let servingURI = userActivity.userInfo?[userActivity_uriRepKey] as? URL,
-                  let serving = MServing.get(viewContext, forURIRepresentation: servingURI) as? MServing,
-                  !serving.isDeleted,
-                  serving.archiveID != nil
-            else {
-                logger.notice("\(#function): unable to continue User Activity")
-                return
-            }
-
-            logger.notice("\(#function): on serving=\(serving.wrappedName)")
-
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                NotificationCenter.default.post(name: .logServing, object: servingURI)
-            }
         }
     }
 }
