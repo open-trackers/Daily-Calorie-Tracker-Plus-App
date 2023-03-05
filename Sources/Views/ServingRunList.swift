@@ -153,13 +153,18 @@ struct ServingRunList: View {
 
     // MARK: - Actions
 
+    // NOTE: 'removes' matching records, where present, from both mainStore and archiveStore.
     private func userRemoveAction(at offsets: IndexSet) {
-        // NOTE: 'removing' specified zServingRun records, where present, from both mainStore and archiveStore.
-
         do {
             for index in offsets {
                 let zServingRun = servingRuns[index]
-                zServingRun.userRemoved = true
+
+                guard let servingArchiveID = zServingRun.zServing?.servingArchiveID,
+                      let consumedDay = zServingRun.zDayRun?.consumedDay,
+                      let consumedTime = zServingRun.consumedTime
+                else { continue }
+
+                try ZServingRun.userRemove(viewContext, servingArchiveID: servingArchiveID, consumedDay: consumedDay, consumedTime: consumedTime)
             }
 
             // re-total the calories in both stores (may no longer be present in main)
