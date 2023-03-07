@@ -62,6 +62,7 @@ struct ContentView: View {
             }
             .tag(Tabs.settings.rawValue)
         }
+        .task(priority: .utility, taskAction)
         .onContinueUserActivity(logCategoryActivityType) {
             selectedTab = Tabs.categories.rawValue
             handleLogCategoryUA(viewContext, $0)
@@ -97,6 +98,11 @@ struct ContentView: View {
         } else {
             Text("Serving Run not available.")
         }
+    }
+
+    @Sendable
+    private func taskAction() async {
+        await handleTaskAction(manager)
     }
 }
 
