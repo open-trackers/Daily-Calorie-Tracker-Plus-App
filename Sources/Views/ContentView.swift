@@ -36,7 +36,7 @@ struct ContentView: View {
 
     var body: some View {
         TabView(selection: $selectedTab) {
-            NavStack(navData: $categoryNavData, destination: destination) {
+            DcaltNavStack(navData: $categoryNavData, destination: destination) {
                 CategoryList()
             }
             .tabItem {
@@ -44,8 +44,8 @@ struct ContentView: View {
             }
             .tag(Tabs.categories.rawValue)
 
-            NavStack(navData: $historyNavData,
-                     destination: destination)
+            DcaltNavStack(navData: $historyNavData,
+                          destination: destination)
             {
                 HistoryView()
             }
@@ -54,7 +54,7 @@ struct ContentView: View {
             }
             .tag(Tabs.history.rawValue)
 
-            NavStack(navData: $settingsNavData, destination: destination) {
+            DcaltNavStack(navData: $settingsNavData, destination: destination) {
                 PhoneSettingsForm()
             }
             .tabItem {
