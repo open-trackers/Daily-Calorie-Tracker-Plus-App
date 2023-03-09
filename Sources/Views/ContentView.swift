@@ -20,28 +20,13 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject private var manager: CoreDataStack
 
-    enum Tabs: Int {
-        case categories = 0
-        case history = 1
-        case settings = 2
-
-        static let categoriesNavUUID = UUID()
-        static let historyNavUUID = UUID()
-        static let settingsNavUUID = UUID()
-
-        var uuid: UUID {
-            switch self {
-            case .categories:
-                return Self.categoriesNavUUID
-            case .history:
-                return Self.historyNavUUID
-            case .settings:
-                return Self.settingsNavUUID
-            }
-        }
+    enum Tabs: String {
+        case categories
+        case history
+        case settings
     }
 
-    @SceneStorage("main-tab") private var selectedTab = 0
+    @SceneStorage("main-tab-str") private var selectedTab = Tabs.categories.rawValue
     @SceneStorage("main-category-nav") private var categoryNavData: Data?
     @SceneStorage("main-history-nav") private var historyNavData: Data?
     @SceneStorage("main-settings-nav") private var settingsNavData: Data?
@@ -50,16 +35,15 @@ struct ContentView: View {
                                 category: String(describing: ContentView.self))
 
     // NOTE: this proxy is duplicated in Gym Routine Tracker Plus's ContentView.
-    private var selectedProxy: Binding<Int> {
+    // QUESTION: can this be moved to TrackerUI somehow?
+    private var selectedProxy: Binding<String> {
         Binding(get: { selectedTab },
                 set: { nuTab in
                     if nuTab != selectedTab {
                         selectedTab = nuTab
                     } else {
-                        guard let _nuTab = Tabs(rawValue: nuTab) else { return }
-                        logger.debug("ContentView: detected tap on already-selected tab")
                         NotificationCenter.default.post(name: .trackerPopNavStack,
-                                                        object: _nuTab.uuid)
+                                                        object: nuTab)
                     }
                 })
     }
@@ -67,7 +51,7 @@ struct ContentView: View {
     var body: some View {
         TabView(selection: selectedProxy) {
             DcaltNavStack(navData: $categoryNavData,
-                          stackIdentifier: Tabs.categoriesNavUUID,
+                          stackIdentifier: Tabs.categories.rawValue,
                           destination: destination)
             {
                 CategoryList()
@@ -78,7 +62,7 @@ struct ContentView: View {
             .tag(Tabs.categories.rawValue)
 
             DcaltNavStack(navData: $historyNavData,
-                          stackIdentifier: Tabs.historyNavUUID,
+                          stackIdentifier: Tabs.history.rawValue,
                           destination: destination)
             {
                 HistoryView()
@@ -89,7 +73,7 @@ struct ContentView: View {
             .tag(Tabs.history.rawValue)
 
             DcaltNavStack(navData: $settingsNavData,
-                          stackIdentifier: Tabs.settingsNavUUID,
+                          stackIdentifier: Tabs.settings.rawValue,
                           destination: destination)
             {
                 PhoneSettingsForm()
