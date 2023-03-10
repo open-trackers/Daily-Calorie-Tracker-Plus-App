@@ -123,27 +123,8 @@ struct DayRunList: View {
     // MARK: - Actions
 
     private func detailAction(_ zDayRun: ZDayRun) {
-        router.path.append(DcaltRoute.dayRunDetail(zDayRun.uriRepresentation))
+        router.path.append(DcaltRoute.dayRunArchive(zDayRun.uriRepresentation))
     }
-
-//    private func deleteAction(at offsets: IndexSet) {
-//        // NOTE: removing specified zDayRun records, where present, from both mainStore and archiveStore.
-//
-//        do {
-//            for index in offsets {
-//                let element = days[index]
-//
-//                guard let consumedDay = element.consumedDay
-//                else { continue }
-//
-//                try ZDayRun.delete(viewContext, consumedDay: consumedDay, inStore: nil)
-//            }
-//
-//            try viewContext.save()
-//        } catch {
-//            logger.error("\(#function): \(error.localizedDescription)")
-//        }
-//    }
 
     // NOTE: 'removes' matching records, where present, from both mainStore and archiveStore.
     private func userRemoveAction(at offsets: IndexSet) {

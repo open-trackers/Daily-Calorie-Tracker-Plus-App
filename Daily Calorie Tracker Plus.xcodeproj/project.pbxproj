@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		401CEA552990AAE400D5303F /* PhoneSettingsForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401CEA542990AAE400D5303F /* PhoneSettingsForm.swift */; };
 		401CEA572990B21600D5303F /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401CEA562990B21600D5303F /* HistoryView.swift */; };
+		402CF93F29BBF0CF00129305 /* TodayDayRun.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402CF93E29BBF0CF00129305 /* TodayDayRun.swift */; };
+		402CF94129BBF4D500129305 /* ArchivalDayRun.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402CF94029BBF4D500129305 /* ArchivalDayRun.swift */; };
 		404A2B6529916BD2006BCFA2 /* TrackerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 404A2B6429916BD2006BCFA2 /* TrackerLib */; };
 		4058C21629995E4200A1088A /* ServingRunList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4058C21529995E4200A1088A /* ServingRunList.swift */; };
 		4078391B299052E800F4C956 /* PlusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4078391A299052E800F4C956 /* PlusApp.swift */; };
@@ -26,6 +28,8 @@
 /* Begin PBXFileReference section */
 		401CEA542990AAE400D5303F /* PhoneSettingsForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneSettingsForm.swift; sourceTree = "<group>"; };
 		401CEA562990B21600D5303F /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		402CF93E29BBF0CF00129305 /* TodayDayRun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayDayRun.swift; sourceTree = "<group>"; };
+		402CF94029BBF4D500129305 /* ArchivalDayRun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivalDayRun.swift; sourceTree = "<group>"; };
 		4058C21529995E4200A1088A /* ServingRunList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServingRunList.swift; sourceTree = "<group>"; };
 		40783917299052E800F4C956 /* Daily Calorie Tracker Plus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Daily Calorie Tracker Plus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4078391A299052E800F4C956 /* PlusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusApp.swift; sourceTree = "<group>"; };
@@ -100,10 +104,12 @@
 			isa = PBXGroup;
 			children = (
 				40783921299052E800F4C956 /* ContentView.swift */,
-				401CEA542990AAE400D5303F /* PhoneSettingsForm.swift */,
 				401CEA562990B21600D5303F /* HistoryView.swift */,
 				40A9158429974320007D684B /* DayRunList.swift */,
+				401CEA542990AAE400D5303F /* PhoneSettingsForm.swift */,
 				4058C21529995E4200A1088A /* ServingRunList.swift */,
+				402CF93E29BBF0CF00129305 /* TodayDayRun.swift */,
+				402CF94029BBF4D500129305 /* ArchivalDayRun.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -199,8 +205,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4078391B299052E800F4C956 /* PlusApp.swift in Sources */,
+				402CF93F29BBF0CF00129305 /* TodayDayRun.swift in Sources */,
 				401CEA572990B21600D5303F /* HistoryView.swift in Sources */,
 				4058C21629995E4200A1088A /* ServingRunList.swift in Sources */,
+				402CF94129BBF4D500129305 /* ArchivalDayRun.swift in Sources */,
 				40A9158529974320007D684B /* DayRunList.swift in Sources */,
 				40783922299052E800F4C956 /* ContentView.swift in Sources */,
 				401CEA552990AAE400D5303F /* PhoneSettingsForm.swift in Sources */,

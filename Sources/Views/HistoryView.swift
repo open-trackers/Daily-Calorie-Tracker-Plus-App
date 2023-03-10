@@ -52,7 +52,7 @@ struct HistoryView: View {
                                         Button("Clear", role: .destructive, action: clearHistoryAction)
                                     },
                                     message: {
-                                        Text("This will remove all historical data, including today.")
+                                        Text("This will remove all historical data, including today’s.")
                                     })
                 .navigationTitle(navigationTitle)
                 .task(priority: .userInitiated, taskAction)

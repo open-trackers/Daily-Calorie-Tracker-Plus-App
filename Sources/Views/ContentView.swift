@@ -65,7 +65,7 @@ struct ContentView: View {
                           stackIdentifier: Tabs.history.rawValue,
                           destination: destination)
             {
-                HistoryView()
+                TodayDayRun()
             }
             .tabItem {
                 Label("History", systemImage: "fossil.shell")
@@ -98,8 +98,16 @@ struct ContentView: View {
     @ViewBuilder
     private func destination(_ router: DcaltRouter, _ route: DcaltRoute) -> some View {
         switch route {
-        case let .dayRunDetail(dayRunURI):
-            servingRunList(dayRunURI)
+        case .dayRunList:
+            HistoryView()
+                .environmentObject(router)
+                .environment(\.managedObjectContext, viewContext)
+        case .dayRunToday:
+            TodayDayRun()
+                .environmentObject(router)
+                .environment(\.managedObjectContext, viewContext)
+        case let .dayRunArchive(dayRunURI):
+            pastDayRun(dayRunURI)
                 .environmentObject(router)
                 .environment(\.managedObjectContext, viewContext)
         default:
@@ -109,15 +117,14 @@ struct ContentView: View {
         }
     }
 
-    // NOTE that this is to access servingRun in Archive Store (not Main Store!)
     @ViewBuilder
-    private func servingRunList(_ dayRunUri: URL) -> some View {
+    private func pastDayRun(_ dayRunUri: URL) -> some View {
         if let zDayRun: ZDayRun = ZDayRun.get(viewContext, forURIRepresentation: dayRunUri),
            let archiveStore = manager.getArchiveStore(viewContext)
         {
-            ServingRunList(zDayRun: zDayRun, archiveStore: archiveStore)
+            ArchivalDayRun(zDayRun: zDayRun, archiveStore: archiveStore)
         } else {
-            Text("Serving Run not available.")
+            Text("Past Day Run not available.")
         }
     }
 

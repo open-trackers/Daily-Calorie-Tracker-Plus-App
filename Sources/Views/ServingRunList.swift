@@ -21,6 +21,7 @@ import TrackerUI
 import DcaltLib
 import DcaltUI
 
+// display ZServingRuns for a given ZDayRun from the specified store (main or archive).
 struct ServingRunList: View {
     @Environment(\.verticalSizeClass) private var verticalSizeClass
     @Environment(\.managedObjectContext) private var viewContext
@@ -32,9 +33,9 @@ struct ServingRunList: View {
 
     // MARK: - Parameters
 
-    private var zDayRun: ZDayRun // assumed to be in archiveStore
+    private let zDayRun: ZDayRun
 
-    init(zDayRun: ZDayRun, archiveStore: NSPersistentStore) {
+    init(zDayRun: ZDayRun, inStore: NSPersistentStore) {
         self.zDayRun = zDayRun
 
         let predicate = ZServingRun.getPredicate(zDayRun: zDayRun, userRemoved: false)
@@ -42,7 +43,7 @@ struct ServingRunList: View {
         let request = makeRequest(ZServingRun.self,
                                   predicate: predicate,
                                   sortDescriptors: sortDescriptors,
-                                  inStore: archiveStore)
+                                  inStore: inStore)
 
         _servingRuns = FetchRequest<ZServingRun>(fetchRequest: request)
     }
@@ -92,7 +93,7 @@ struct ServingRunList: View {
                    rowBackground: rowBackground,
                    results: servingRuns)
             .listStyle(.plain)
-            .navigationTitle(navigationTitle)
+//            .navigationTitle(navigationTitle)
     }
 
     private func header(ctx _: Binding<Context>) -> some View {
@@ -141,15 +142,9 @@ struct ServingRunList: View {
 
     // MARK: - Properties
 
-    private var navigationTitle: String {
-        zDayRun.wrappedConsumedDay
-    }
-
     private var totalCalories: Int16 {
         servingRuns.reduce(0) { $0 + $1.calories }
     }
-
-    // MARK: - Properties
 
     // MARK: - Actions
 
@@ -230,7 +225,7 @@ struct ServingRunList_Previews: PreviewProvider {
         try? ctx.save()
 
         return NavigationStack {
-            ServingRunList(zDayRun: zdr, archiveStore: archiveStore)
+            ServingRunList(zDayRun: zdr, inStore: archiveStore)
                 .environment(\.managedObjectContext, ctx)
                 .environmentObject(manager)
         }
