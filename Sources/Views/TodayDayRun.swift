@@ -21,6 +21,13 @@ struct TodayDayRun: View {
     @EnvironmentObject private var manager: CoreDataStack
     @EnvironmentObject private var router: DcaltRouter
 
+    private static let df: DateFormatter = {
+        let df = DateFormatter()
+        df.dateStyle = .medium
+        df.timeStyle = .none
+        return df
+    }()
+
     var body: some View {
         if let mainStore = manager.getMainStore(viewContext),
            let appSetting = try? AppSetting.getOrCreate(viewContext),
@@ -40,7 +47,13 @@ struct TodayDayRun: View {
                         }
                     }
                 }
-                .navigationTitle("Today")
+                .navigationTitle("Today, \(formattedConsumedDate(zDayRun))")
         }
+    }
+
+    private func formattedConsumedDate(_ zDayRun: ZDayRun) -> String {
+        guard let dateVal = zDayRun.consumedDate()
+        else { return "unknown" }
+        return Self.df.string(from: dateVal)
     }
 }

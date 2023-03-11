@@ -58,7 +58,7 @@ struct DayRunList: View {
         // EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5)
     }
 
-    private let df: DateFormatter = {
+    private static let df: DateFormatter = {
         let df = DateFormatter()
         df.dateStyle = .short
         df.timeStyle = .none
@@ -99,7 +99,7 @@ struct DayRunList: View {
     private func listRow(element: ZDayRun) -> some View {
         Button(action: { detailAction(element) }) {
             LazyVGrid(columns: gridItems, alignment: .leading) {
-                Text(element.wrappedConsumedDay)
+                Text(formattedConsumedDate(element))
                     .lineLimit(1)
                     .padding(columnPadding)
                 Text("\(element.calories) cals")
@@ -113,9 +113,10 @@ struct DayRunList: View {
         EntityBackground(categoryColor)
     }
 
-    private func startedAtText(_ date: Date?) -> some View {
-        guard let date else { return Text("") }
-        return Text(df.string(from: date))
+    private func formattedConsumedDate(_ zDayRun: ZDayRun) -> String {
+        guard let dateVal = zDayRun.consumedDate()
+        else { return "unknown" }
+        return Self.df.string(from: dateVal)
     }
 
     // MARK: - Properties

@@ -20,8 +20,21 @@ struct ArchivalDayRun: View {
     var zDayRun: ZDayRun
     var archiveStore: NSPersistentStore
 
+    private static let df: DateFormatter = {
+        let df = DateFormatter()
+        df.dateStyle = .medium
+        df.timeStyle = .none
+        return df
+    }()
+
     var body: some View {
         ServingRunList(zDayRun: zDayRun, inStore: archiveStore)
-            .navigationTitle(zDayRun.wrappedConsumedDay)
+            .navigationTitle(dateStr)
+    }
+
+    private var dateStr: String {
+        guard let dateVal = zDayRun.consumedDate()
+        else { return "unknown" }
+        return Self.df.string(from: dateVal)
     }
 }

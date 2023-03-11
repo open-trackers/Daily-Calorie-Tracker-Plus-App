@@ -74,15 +74,6 @@ struct ServingRunList: View {
         GridItem(.flexible(minimum: 80), spacing: columnSpacing, alignment: .trailing),
     ] }
 
-//    private let df: DateFormatter = {
-//        let df = DateFormatter()
-//        df.dateStyle = .short
-//        df.timeStyle = .short
-//        return df
-//    }()
-
-    // private let tc = TimeCompactor(ifZero: "", style: .full, roundSmallToWhole: false)
-
     // MARK: - Views
 
     var body: some View {
