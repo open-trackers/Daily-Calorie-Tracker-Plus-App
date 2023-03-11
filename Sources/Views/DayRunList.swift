@@ -102,7 +102,7 @@ struct DayRunList: View {
                 Text(formattedConsumedDate(element))
                     .lineLimit(1)
                     .padding(columnPadding)
-                Text("\(element.calories) cals")
+                Text("\(element.calories) cal")
                     .lineLimit(1)
             }
             .frame(maxWidth: .infinity)
