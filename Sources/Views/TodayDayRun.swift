@@ -43,7 +43,7 @@ struct TodayDayRun: View {
                             Haptics.play()
                             router.path.append(DcaltRoute.dayRunList)
                         }) {
-                            Text("History")
+                            Text("Full History")
                         }
                     }
                 }

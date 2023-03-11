@@ -68,7 +68,7 @@ struct ContentView: View {
                 TodayDayRun()
             }
             .tabItem {
-                Label("Today & History", systemImage: "fossil.shell")
+                Label("Today", systemImage: "fossil.shell")
             }
             .tag(Tabs.history.rawValue)
 
