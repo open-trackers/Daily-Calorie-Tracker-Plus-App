@@ -57,3 +57,35 @@ struct TodayDayRun: View {
         return Self.df.string(from: dateVal)
     }
 }
+
+struct TodayDayRun_Previews: PreviewProvider {
+    static var previews: some View {
+        let manager = CoreDataStack.getPreviewStack()
+        let ctx = manager.container.viewContext
+        let mainStore = manager.getMainStore(ctx)!
+
+        let consumedToday = Date.now
+
+        let (consumedDay1, consumedTime1) = splitDateLocal(consumedToday)!
+
+        let category1ArchiveID = UUID()
+        let category2ArchiveID = UUID()
+        let serving1ArchiveID = UUID()
+        let serving2ArchiveID = UUID()
+
+        let zc1 = ZCategory.create(ctx, categoryArchiveID: category1ArchiveID, categoryName: "Fruit", toStore: mainStore)
+        let zc2 = ZCategory.create(ctx, categoryArchiveID: category2ArchiveID, categoryName: "Meat", toStore: mainStore)
+        let zs1 = ZServing.create(ctx, zCategory: zc1, servingArchiveID: serving1ArchiveID, servingName: "Banana", toStore: mainStore)
+        let zs2 = ZServing.create(ctx, zCategory: zc2, servingArchiveID: serving2ArchiveID, servingName: "Steak", toStore: mainStore)
+        let zdr = ZDayRun.create(ctx, consumedDay: consumedDay1, calories: 2433, toStore: mainStore)
+        _ = ZServingRun.create(ctx, zDayRun: zdr, zServing: zs1, consumedTime: consumedTime1, calories: 120, toStore: mainStore)
+        _ = ZServingRun.create(ctx, zDayRun: zdr, zServing: zs2, consumedTime: consumedTime1, calories: 450, toStore: mainStore)
+        try? ctx.save()
+
+        return NavigationStack {
+            TodayDayRun()
+                .environment(\.managedObjectContext, ctx)
+                .environmentObject(manager)
+        }
+    }
+}
