@@ -32,8 +32,8 @@ struct TodayDayRun: View {
         if let mainStore = manager.getMainStore(viewContext),
            let appSetting = try? AppSetting.getOrCreate(viewContext),
            case let startOfDay = appSetting.startOfDayEnum,
-           let (consumedDay, _) = getSubjectiveDate(dayStartHour: startOfDay.hour,
-                                                    dayStartMinute: startOfDay.minute),
+           let (consumedDay, _) = Date.now.getSubjectiveDate(dayStartHour: startOfDay.hour,
+                                                             dayStartMinute: startOfDay.minute),
            let zDayRun = try? ZDayRun.get(viewContext, consumedDay: consumedDay, inStore: mainStore)
         {
             ServingRunList(zDayRun: zDayRun, inStore: mainStore)
@@ -67,7 +67,7 @@ struct TodayDayRun_Previews: PreviewProvider {
 
         let consumedToday = Date.now
 
-        let (consumedDay1, consumedTime1) = splitDateLocal(consumedToday)!
+        let (consumedDay1, consumedTime1) = consumedToday.splitToLocal()!
 
         let category1ArchiveID = UUID()
         let category2ArchiveID = UUID()
