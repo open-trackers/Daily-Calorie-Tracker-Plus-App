@@ -52,7 +52,8 @@ struct TodayDayRun: View {
     }
 
     private func formattedConsumedDate(_ zDayRun: ZDayRun) -> String {
-        guard let dateVal = zDayRun.consumedDate()
+        guard let startOfDay = try? AppSetting.getOrCreate(viewContext).startOfDayEnum,
+              let dateVal = zDayRun.consumedDate(consumedTime: startOfDay.HH_mm_ss)
         else { return "unknown" }
         return Self.df.string(from: dateVal)
     }

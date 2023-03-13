@@ -17,6 +17,8 @@ import TrackerLib
 import TrackerUI
 
 struct ArchivalDayRun: View {
+    @Environment(\.managedObjectContext) private var viewContext
+
     var zDayRun: ZDayRun
     var archiveStore: NSPersistentStore
 
@@ -33,7 +35,8 @@ struct ArchivalDayRun: View {
     }
 
     private var dateStr: String {
-        guard let dateVal = zDayRun.consumedDate()
+        guard let startOfDay = try? AppSetting.getOrCreate(viewContext).startOfDayEnum,
+              let dateVal = zDayRun.consumedDate(consumedTime: startOfDay.HH_mm_ss)
         else { return "unknown" }
         return Self.df.string(from: dateVal)
     }
@@ -46,7 +49,7 @@ struct ArchivalDayRun_Previews: PreviewProvider {
         let archiveStore = manager.getArchiveStore(ctx)!
 
         let consumedDay1 = "2023-02-01"
-        let consumedTime1 = "16:05"
+        let consumedTime1 = "03:05"
 
         let category1ArchiveID = UUID()
         let category2ArchiveID = UUID()
