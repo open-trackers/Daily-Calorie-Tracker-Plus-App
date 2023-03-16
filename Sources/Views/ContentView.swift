@@ -16,7 +16,12 @@ import DcaltLib
 import DcaltUI
 import TrackerUI
 
+let mainNavDataCategoryKey = "main-category-nav"
+let mainNavDataTodayKey = "main-today-nav"
+let mainNavDataSettingsKey = "main-settings-nav"
+
 struct ContentView: View {
+    @Environment(\.verticalSizeClass) private var verticalSizeClass
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject private var manager: CoreDataStack
 
@@ -26,16 +31,22 @@ struct ContentView: View {
     @SceneStorage(tabbedViewSelectedTabKey) private var selectedTab = TabbedTabs.categories.rawValue
 
     var body: some View {
-        TabbedView()
-            .task(priority: .utility, taskAction)
-            .onContinueUserActivity(logCategoryActivityType) {
-                selectedTab = TabbedTabs.categories.rawValue
-                handleLogCategoryUA(viewContext, $0)
+        VStack {
+            if verticalSizeClass == .compact {
+                NonTabbedView()
+            } else {
+                TabbedView()
             }
-            .onContinueUserActivity(logServingActivityType) {
-                selectedTab = TabbedTabs.categories.rawValue
-                handleLogServingUA(viewContext, $0)
-            }
+        }
+        .task(priority: .utility, taskAction)
+        .onContinueUserActivity(logCategoryActivityType) {
+            selectedTab = TabbedTabs.categories.rawValue
+            handleLogCategoryUA(viewContext, $0)
+        }
+        .onContinueUserActivity(logServingActivityType) {
+            selectedTab = TabbedTabs.categories.rawValue
+            handleLogServingUA(viewContext, $0)
+        }
     }
 
     @Sendable
@@ -53,8 +64,10 @@ struct ContentView_Previews: PreviewProvider {
         _ = MCategory.create(ctx, name: "Snacks", userOrder: 1)
 
         try? ctx.save()
-        return ContentView()
-            .environment(\.managedObjectContext, ctx)
-            .environmentObject(manager)
+        return NavigationStack {
+            ContentView()
+                .environment(\.managedObjectContext, ctx)
+                .environmentObject(manager)
+        }
     }
 }

@@ -29,26 +29,28 @@ struct TodayDayRun: View {
     }()
 
     var body: some View {
-        if let mainStore = manager.getMainStore(viewContext),
-           let appSetting = try? AppSetting.getOrCreate(viewContext),
-           case let startOfDay = appSetting.startOfDayEnum,
-           let (consumedDay, _) = Date.now.getSubjectiveDate(dayStartHour: startOfDay.hour,
-                                                             dayStartMinute: startOfDay.minute),
-           let zDayRun = try? ZDayRun.get(viewContext, consumedDay: consumedDay, inStore: mainStore)
-        {
-            ServingRunList(zDayRun: zDayRun, inStore: mainStore)
-                .toolbar {
-                    ToolbarItem {
-                        Button(action: {
-                            Haptics.play()
-                            router.path.append(DcaltRoute.dayRunList)
-                        }) {
-                            Text("Full History")
-                        }
-                    }
-                }
-                .navigationTitle("Today, \(formattedConsumedDate(zDayRun))")
+        VStack {
+            if let mainStore = manager.getMainStore(viewContext),
+               let appSetting = try? AppSetting.getOrCreate(viewContext),
+               case let startOfDay = appSetting.startOfDayEnum,
+               let (consumedDay, _) = Date.now.getSubjectiveDate(dayStartHour: startOfDay.hour,
+                                                                 dayStartMinute: startOfDay.minute),
+               let zDayRun = try? ZDayRun.get(viewContext, consumedDay: consumedDay, inStore: mainStore)
+            {
+                ServingRunList(zDayRun: zDayRun, inStore: mainStore)
+            }
         }
+        .toolbar {
+            ToolbarItem {
+                Button(action: {
+                    Haptics.play()
+                    router.path.append(DcaltRoute.dayRunList)
+                }) {
+                    Text("Full History")
+                }
+            }
+        }
+        .navigationTitle("Today") // , \(formattedConsumedDate(zDayRun))
     }
 
     private func formattedConsumedDate(_ zDayRun: ZDayRun) -> String {

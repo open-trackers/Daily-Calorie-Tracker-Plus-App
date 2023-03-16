@@ -18,7 +18,7 @@ import TrackerUI
 
 enum TabbedTabs: String {
     case categories
-    case history
+    case today
     case settings
 }
 
@@ -30,9 +30,9 @@ struct TabbedView: View {
 
     @SceneStorage(tabbedViewSelectedTabKey) private var selectedTab = TabbedTabs.categories.rawValue
 
-    @SceneStorage("main-category-nav") private var categoryNavData: Data?
-    @SceneStorage("main-history-nav") private var historyNavData: Data?
-    @SceneStorage("main-settings-nav") private var settingsNavData: Data?
+    @SceneStorage(mainNavDataCategoryKey) private var categoryNavData: Data?
+    @SceneStorage(mainNavDataTodayKey) private var todayNavData: Data?
+    @SceneStorage(mainNavDataSettingsKey) private var settingsNavData: Data?
 
     // NOTE: this proxy is duplicated in Gym Routine Tracker Plus's ContentView.
     // QUESTION: can this be moved to TrackerUI somehow?
@@ -61,8 +61,8 @@ struct TabbedView: View {
             }
             .tag(TabbedTabs.categories.rawValue)
 
-            DcaltNavStack(navData: $historyNavData,
-                          stackIdentifier: TabbedTabs.history.rawValue,
+            DcaltNavStack(navData: $todayNavData,
+                          stackIdentifier: TabbedTabs.today.rawValue,
                           destination: destination)
             {
                 TodayDayRun()
@@ -70,7 +70,7 @@ struct TabbedView: View {
             .tabItem {
                 Label("Today", systemImage: "fossil.shell")
             }
-            .tag(TabbedTabs.history.rawValue)
+            .tag(TabbedTabs.today.rawValue)
 
             DcaltNavStack(navData: $settingsNavData,
                           stackIdentifier: TabbedTabs.settings.rawValue,
