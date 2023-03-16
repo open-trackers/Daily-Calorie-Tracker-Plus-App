@@ -22,7 +22,7 @@ struct TodayDayRun: View {
     @EnvironmentObject private var router: DcaltRouter
 
     var withSettings = false
-    
+
     private static let df: DateFormatter = {
         let df = DateFormatter()
         df.dateStyle = .medium

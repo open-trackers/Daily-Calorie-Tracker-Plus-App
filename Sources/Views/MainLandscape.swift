@@ -1,5 +1,5 @@
 //
-//  NonTabbedView.swift
+//  MainLandscape.swift
 //
 // Copyright 2023  OpenAlloc LLC
 //
@@ -16,10 +16,9 @@ import DcaltLib
 import DcaltUI
 import TrackerUI
 
-struct NonTabbedView: View {
+struct MainLandscape: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject private var manager: CoreDataStack
-    //@EnvironmentObject private var router: DcaltRouter
 
     @SceneStorage(mainNavDataCategoryKey) private var categoryNavData: Data?
     @SceneStorage(mainNavDataTodayKey) private var todayNavData: Data?
@@ -40,9 +39,8 @@ struct NonTabbedView: View {
                 TodayDayRun(withSettings: true)
             }
         }
-       
     }
-    
+
     private func destination(router: DcaltRouter, route: DcaltRoute) -> some View {
         Destination(route: route)
             .environmentObject(router)
@@ -50,7 +48,7 @@ struct NonTabbedView: View {
     }
 }
 
-struct NonTabbedView_Previews: PreviewProvider {
+struct MainLandscape_Previews: PreviewProvider {
     static var previews: some View {
         let manager = CoreDataStack.getPreviewStack()
         let ctx = manager.container.viewContext
@@ -59,7 +57,7 @@ struct NonTabbedView_Previews: PreviewProvider {
         _ = MCategory.create(ctx, name: "Snacks", userOrder: 1)
 
         try? ctx.save()
-        return NonTabbedView()
+        return MainLandscape()
             .environment(\.managedObjectContext, ctx)
             .environmentObject(manager)
     }

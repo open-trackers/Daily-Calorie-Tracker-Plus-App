@@ -29,27 +29,28 @@ struct ContentView: View {
     private let logger = Logger(subsystem: Bundle.main.bundleIdentifier!,
                                 category: String(describing: ContentView.self))
 
-    @SceneStorage(tabbedViewSelectedTabKey) private var selectedTab = TabbedTabs.categories.rawValue
+    @SceneStorage(tabbedViewSelectedTabKey) private var selectedTab = PortraitTab.categories.rawValue
 
     var body: some View {
-        VStack {
-            if horizontalSizeClass == .regular && verticalSizeClass == .regular {
-                // enough vertical to show number pad, etc.
-                NonTabbedView()
-                    .environment(\.managedObjectContext, viewContext)
-
-            } else {
-                TabbedView()
-                    .environment(\.managedObjectContext, viewContext)
+        GeometryReader { geo in
+            let isLandscape = geo.size.width > geo.size.height
+            let isPad = horizontalSizeClass == .regular && verticalSizeClass == .regular
+            VStack {
+                if isPad, isLandscape {
+                    // enough vertical to show number pad, etc.
+                    MainLandscape()
+                } else {
+                    MainPortrait()
+                }
             }
         }
         .task(priority: .utility, taskAction)
         .onContinueUserActivity(logCategoryActivityType) {
-            selectedTab = TabbedTabs.categories.rawValue
+            selectedTab = PortraitTab.categories.rawValue
             handleLogCategoryUA(viewContext, $0)
         }
         .onContinueUserActivity(logServingActivityType) {
-            selectedTab = TabbedTabs.categories.rawValue
+            selectedTab = PortraitTab.categories.rawValue
             handleLogServingUA(viewContext, $0)
         }
     }
@@ -69,10 +70,8 @@ struct ContentView_Previews: PreviewProvider {
         _ = MCategory.create(ctx, name: "Snacks", userOrder: 1)
 
         try? ctx.save()
-        return NavigationStack {
-            ContentView()
-                .environment(\.managedObjectContext, ctx)
-                .environmentObject(manager)
-        }
+        return ContentView()
+            .environment(\.managedObjectContext, ctx)
+            .environmentObject(manager)
     }
 }
