@@ -27,6 +27,7 @@ let tabbedViewSelectedTabKey = "main-tab-str"
 struct TabbedView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject private var manager: CoreDataStack
+    //@EnvironmentObject private var router: DcaltRouter
 
     @SceneStorage(tabbedViewSelectedTabKey) private var selectedTab = TabbedTabs.categories.rawValue
 
@@ -85,8 +86,10 @@ struct TabbedView: View {
         }
     }
 
-    private func destination(router _: DcaltRouter, route: DcaltRoute) -> some View {
+    private func destination(router: DcaltRouter, route: DcaltRoute) -> some View {
         Destination(route: route)
+            .environmentObject(router)
+            .environment(\.managedObjectContext, viewContext)
     }
 }
 

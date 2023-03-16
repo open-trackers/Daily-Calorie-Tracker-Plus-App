@@ -21,6 +21,8 @@ struct TodayDayRun: View {
     @EnvironmentObject private var manager: CoreDataStack
     @EnvironmentObject private var router: DcaltRouter
 
+    var withSettings = false
+    
     private static let df: DateFormatter = {
         let df = DateFormatter()
         df.dateStyle = .medium
@@ -47,6 +49,15 @@ struct TodayDayRun: View {
                     router.path.append(DcaltRoute.dayRunList)
                 }) {
                     Text("Full History")
+                }
+            }
+            if withSettings {
+                ToolbarItem {
+                    Button(action: {
+                        router.path.append(DcaltRoute.settings)
+                    }) {
+                        Text("Settings")
+                    }
                 }
             }
         }

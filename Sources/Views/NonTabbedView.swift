@@ -19,9 +19,8 @@ import TrackerUI
 struct NonTabbedView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject private var manager: CoreDataStack
-    @EnvironmentObject private var router: DcaltRouter
+    //@EnvironmentObject private var router: DcaltRouter
 
-    @SceneStorage(tabbedViewSelectedTabKey) private var selectedTab = TabbedTabs.categories.rawValue
     @SceneStorage(mainNavDataCategoryKey) private var categoryNavData: Data?
     @SceneStorage(mainNavDataTodayKey) private var todayNavData: Data?
 
@@ -38,22 +37,16 @@ struct NonTabbedView: View {
                           stackIdentifier: "Today",
                           destination: destination)
             {
-                TodayDayRun()
+                TodayDayRun(withSettings: true)
             }
         }
-        .toolbar {
-            ToolbarItem {
-                Button(action: {
-                    router.path.append(DcaltRoute.settings)
-                }) {
-                    Text("Settings")
-                }
-            }
-        }
+       
     }
-
-    private func destination(router _: DcaltRouter, route: DcaltRoute) -> some View {
+    
+    private func destination(router: DcaltRouter, route: DcaltRoute) -> some View {
         Destination(route: route)
+            .environmentObject(router)
+            .environment(\.managedObjectContext, viewContext)
     }
 }
 

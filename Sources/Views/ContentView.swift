@@ -22,6 +22,7 @@ let mainNavDataSettingsKey = "main-settings-nav"
 
 struct ContentView: View {
     @Environment(\.verticalSizeClass) private var verticalSizeClass
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject private var manager: CoreDataStack
 
@@ -32,10 +33,14 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            if verticalSizeClass == .compact {
+            if horizontalSizeClass == .regular && verticalSizeClass == .regular {
+                // enough vertical to show number pad, etc.
                 NonTabbedView()
+                    .environment(\.managedObjectContext, viewContext)
+
             } else {
                 TabbedView()
+                    .environment(\.managedObjectContext, viewContext)
             }
         }
         .task(priority: .utility, taskAction)
