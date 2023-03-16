@@ -26,8 +26,8 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject private var manager: CoreDataStack
 
-    private let logger = Logger(subsystem: Bundle.main.bundleIdentifier!,
-                                category: String(describing: ContentView.self))
+//    private let logger = Logger(subsystem: Bundle.main.bundleIdentifier!,
+//                                category: String(describing: ContentView.self))
 
     @SceneStorage(tabbedViewSelectedTabKey) private var selectedTab = PortraitTab.categories.rawValue
 
