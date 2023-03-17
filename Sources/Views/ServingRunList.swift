@@ -22,7 +22,7 @@ import DcaltLib
 import DcaltUI
 
 // display ZServingRuns for a given ZDayRun from the specified store (main or archive).
-struct ServingRunList: View {
+struct ServingRunList<Header: View>: View {
     @Environment(\.verticalSizeClass) private var verticalSizeClass
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject private var manager: CoreDataStack
@@ -34,9 +34,14 @@ struct ServingRunList: View {
     // MARK: - Parameters
 
     private let zDayRun: ZDayRun
+    private var tableHeader: () -> Header
 
-    init(zDayRun: ZDayRun, inStore: NSPersistentStore) {
+    init(zDayRun: ZDayRun,
+         inStore: NSPersistentStore,
+         tableHeader: @escaping () -> Header = { EmptyView() })
+    {
         self.zDayRun = zDayRun
+        self.tableHeader = tableHeader
 
         let predicate = ZServingRun.getPredicate(zDayRun: zDayRun, userRemoved: false)
         let sortDescriptors = ZServingRun.byConsumedTime(ascending: true)
@@ -87,7 +92,9 @@ struct ServingRunList: View {
 //            .navigationTitle(navigationTitle)
     }
 
+    @ViewBuilder
     private func header(ctx _: Binding<Context>) -> some View {
+        tableHeader()
         LazyVGrid(columns: gridItems, alignment: .leading) {
             Text("Time")
                 .padding(columnPadding)

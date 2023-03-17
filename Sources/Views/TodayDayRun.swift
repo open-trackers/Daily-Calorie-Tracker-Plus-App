@@ -21,7 +21,30 @@ struct TodayDayRun: View {
     @EnvironmentObject private var manager: CoreDataStack
     @EnvironmentObject private var router: DcaltRouter
 
-    var withSettings = false
+    // MARK: - Parameters
+
+    private let withSettings: Bool
+    private let mainStore: NSPersistentStore
+
+    internal init(withSettings: Bool,
+                  mainStore: NSPersistentStore)
+    {
+        self.withSettings = withSettings
+        self.mainStore = mainStore
+
+        let predicate = ZDayRun.getPredicate(userRemoved: false)
+        let sortDescriptors = ZDayRun.byConsumedDay(ascending: false)
+        let request = makeRequest(ZDayRun.self,
+                                  predicate: predicate,
+                                  sortDescriptors: sortDescriptors,
+                                  inStore: mainStore)
+        request.fetchLimit = 1
+        _dayRuns = FetchRequest<ZDayRun>(fetchRequest: request)
+    }
+
+    // MARK: - Locals
+
+    @FetchRequest private var dayRuns: FetchedResults<ZDayRun>
 
     private static let df: DateFormatter = {
         let df = DateFormatter()
@@ -30,16 +53,18 @@ struct TodayDayRun: View {
         return df
     }()
 
+    // MARK: - Views
+
     var body: some View {
         VStack {
-            if let mainStore = manager.getMainStore(viewContext),
-               let appSetting = try? AppSetting.getOrCreate(viewContext),
-               case let startOfDay = appSetting.startOfDayEnum,
-               let (consumedDay, _) = Date.now.getSubjectiveDate(dayStartHour: startOfDay.hour,
-                                                                 dayStartMinute: startOfDay.minute),
-               let zDayRun = try? ZDayRun.get(viewContext, consumedDay: consumedDay, inStore: mainStore)
+            if let dayRun,
+               let startOfDay = try? AppSetting.getOrCreate(viewContext).startOfDayEnum,
+               let dateVal = dayRun.consumedDate(consumedTime: startOfDay.HH_mm_ss)
             {
-                ServingRunList(zDayRun: zDayRun, inStore: mainStore)
+                ServingRunList(zDayRun: dayRun, inStore: mainStore) {
+                    Text(Self.df.string(from: dateVal))
+                        .font(.largeTitle)
+                }
             } else {
                 Text("No activity for today. See ‘Full History’.") // shouldn't appear; included here defensively
             }
@@ -63,7 +88,14 @@ struct TodayDayRun: View {
                 }
             }
         }
-        .navigationTitle("Today") // , \(formattedConsumedDate(zDayRun))
+        .navigationTitle("Today")
+        .navigationBarTitleDisplayMode(.inline)
+    }
+
+    // MARK: - Properties
+
+    private var dayRun: ZDayRun? {
+        dayRuns.first
     }
 
     private func formattedConsumedDate(_ zDayRun: ZDayRun) -> String {
@@ -99,7 +131,7 @@ struct TodayDayRun_Previews: PreviewProvider {
         try? ctx.save()
 
         return NavigationStack {
-            TodayDayRun()
+            TodayDayRun(withSettings: false, mainStore: mainStore)
                 .environment(\.managedObjectContext, ctx)
                 .environmentObject(manager)
         }

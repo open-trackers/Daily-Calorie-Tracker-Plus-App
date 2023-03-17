@@ -65,7 +65,11 @@ struct MainPortrait: View {
                           stackIdentifier: PortraitTab.today.rawValue,
                           destination: destination)
             {
-                TodayDayRun()
+                if let mainStore = manager.getMainStore(viewContext) {
+                    TodayDayRun(withSettings: false, mainStore: mainStore)
+                } else {
+                    Text("Recent not available.")
+                }
             }
             .tabItem {
                 Label("Today", systemImage: "fossil.shell")

@@ -31,9 +31,13 @@ struct Destination: View {
                 .environmentObject(router)
                 .environment(\.managedObjectContext, viewContext)
         case .dayRunToday:
-            TodayDayRun()
-                .environmentObject(router)
-                .environment(\.managedObjectContext, viewContext)
+            if let mainStore = manager.getMainStore(viewContext) {
+                TodayDayRun(withSettings: false, mainStore: mainStore)
+                    .environmentObject(router)
+                    .environment(\.managedObjectContext, viewContext)
+            } else {
+                Text("Recent not available.")
+            }
         case let .dayRunArchive(dayRunURI):
             pastDayRun(dayRunURI)
                 .environmentObject(router)
