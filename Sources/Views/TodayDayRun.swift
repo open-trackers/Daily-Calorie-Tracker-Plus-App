@@ -41,7 +41,7 @@ struct TodayDayRun: View {
             {
                 ServingRunList(zDayRun: zDayRun, inStore: mainStore)
             } else {
-                Text("No activity for today. See ‘Full History’.")      // shouldn't appear; included here defensively
+                Text("No activity for today. See ‘Full History’.") // shouldn't appear; included here defensively
             }
         }
         .toolbar {
