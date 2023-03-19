@@ -1,5 +1,5 @@
 //
-//  PhoneSettingsForm.swift
+//  PlusSettingsForm.swift
 //
 // Copyright 2023  OpenAlloc LLC
 //
@@ -17,7 +17,7 @@ import DcaltUI
 import TrackerLib
 import TrackerUI
 
-struct PhoneSettingsForm: View {
+struct PlusSettingsForm: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject private var manager: CoreDataStack
     @EnvironmentObject private var router: DcaltRouter
@@ -57,14 +57,14 @@ struct PhoneSettingsForm: View {
     // MARK: - Actions
 }
 
-struct PhoneSettingsForm_Previews: PreviewProvider {
+struct PlusSettingsForm_Previews: PreviewProvider {
     static var previews: some View {
         let manager = CoreDataStack.getPreviewStack()
         let context = manager.container.viewContext
         let appSet = AppSetting(context: context)
         appSet.startOfDayEnum = StartOfDay.defaultValue
         try? context.save()
-        return NavigationStack { PhoneSettingsForm()
+        return NavigationStack { PlusSettingsForm()
             .environment(\.managedObjectContext, manager.container.viewContext)
             .environmentObject(manager)
         }

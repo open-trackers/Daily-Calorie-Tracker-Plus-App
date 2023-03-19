@@ -76,7 +76,7 @@ struct MainPortrait: View {
                           stackIdentifier: PortraitTab.settings.rawValue,
                           destination: destination)
             {
-                PhoneSettingsForm()
+                PlusSettingsForm()
             }
             .tabItem {
                 Label("Settings", systemImage: "gear")
