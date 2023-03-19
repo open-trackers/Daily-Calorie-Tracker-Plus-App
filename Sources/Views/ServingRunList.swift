@@ -223,9 +223,11 @@ struct ServingRunList_Previews: PreviewProvider {
         try? ctx.save()
 
         return NavigationStack {
-            ServingRunList(zDayRun: zdr, inStore: archiveStore)
-                .environment(\.managedObjectContext, ctx)
-                .environmentObject(manager)
+            ServingRunList(zDayRun: zdr, inStore: archiveStore) {
+                Text("Table Header")
+            }
+            .environment(\.managedObjectContext, ctx)
+            .environmentObject(manager)
         }
     }
 }

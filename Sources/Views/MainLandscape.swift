@@ -36,11 +36,7 @@ struct MainLandscape: View {
                           stackIdentifier: "Today",
                           destination: destination)
             {
-                if let mainStore = manager.getMainStore(viewContext) {
-                    TodayDayRun(withSettings: true, mainStore: mainStore)
-                } else {
-                    Text("Recent not available.")
-                }
+                PlusTodayDayRun(withSettings: true)
             }
         }
     }
