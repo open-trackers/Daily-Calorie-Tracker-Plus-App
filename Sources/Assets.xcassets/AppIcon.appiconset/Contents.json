@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "dct_logo_back.png",
+      "filename" : "dct_logo.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -52,6 +52,7 @@
       "size" : "512x512"
     },
     {
+      "filename" : "dct_logo_alpha.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "512x512"
