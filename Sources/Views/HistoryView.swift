@@ -46,14 +46,16 @@ struct HistoryView: View {
                         }
                     }
                 }
-                .confirmationDialog("",
-                                    isPresented: $showClearDialog,
-                                    actions: {
-                                        Button("Clear", role: .destructive, action: clearHistoryAction)
-                                    },
-                                    message: {
-                                        Text("This will remove all historical data, including today’s.")
-                                    })
+                // NOTE: using an alert, as confirmationDialog may be clipped at top of view on iPad
+                // .confirmationDialog(
+                .alert("",
+                       isPresented: $showClearDialog,
+                       actions: {
+                           Button("Clear", role: .destructive, action: clearHistoryAction)
+                       },
+                       message: {
+                           Text("This will remove all historical data, including today’s.")
+                       })
                 .navigationTitle(navigationTitle)
                 .task(priority: .userInitiated, taskAction)
         } else {
