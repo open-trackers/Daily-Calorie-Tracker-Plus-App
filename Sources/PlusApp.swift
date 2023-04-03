@@ -16,7 +16,7 @@ import TrackerLib
 import TrackerUI
 
 @main
-struct Daily_Calorie_Tracker_Plus_App: App {
+struct Plus_App: App {
     @Environment(\.scenePhase) var scenePhase
 
     // MARK: - Locals
