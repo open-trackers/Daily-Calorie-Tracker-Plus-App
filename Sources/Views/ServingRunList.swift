@@ -199,7 +199,7 @@ struct ServingRunList<Header: View>: View {
 
         let targetCalories: Int16 = (try? AppSetting.getOrCreate(viewContext).targetCalories) ?? defaultTargetCalories
 
-        refreshWidget(targetCalories: targetCalories, currentCalories: calories, reload: true)
+        WidgetEntry.refresh(targetCalories: targetCalories, currentCalories: calories, reload: true)
     }
 }
 
