@@ -8,7 +8,6 @@
 // file, You can obtain one at https://mozilla.org/MPL/2.0/.
 //
 
-import Intents
 import SwiftUI
 import WidgetKit
 
@@ -30,8 +29,6 @@ struct WidgetDCT: Widget {
 
 struct WidgetDCT_Previews: PreviewProvider {
     static var previews: some View {
-//        WidgetView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
-//            .previewContext(WidgetPreviewContext(family: .systemSmall))
         let entry = WidgetEntry(targetCalories: 2000, currentCalories: 500)
         return WidgetView(entry: entry)
             .accentColor(.blue)
