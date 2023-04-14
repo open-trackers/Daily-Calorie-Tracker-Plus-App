@@ -1,5 +1,5 @@
 //
-//  WidgetDCT.swift
+//  WidgetDCTP.swift
 //
 // Copyright 2023  OpenAlloc LLC
 //
@@ -14,8 +14,8 @@ import WidgetKit
 import DcaltLib
 import DcaltUI
 
-struct WidgetDCT: Widget {
-    let kind: String = "WidgetDCT"
+struct WidgetDCTP: Widget {
+    let kind: String = "WidgetDCTP"
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
@@ -27,7 +27,7 @@ struct WidgetDCT: Widget {
     }
 }
 
-struct WidgetDCT_Previews: PreviewProvider {
+struct WidgetDCTP_Previews: PreviewProvider {
     static var previews: some View {
         let entry = WidgetEntry(targetCalories: 2000, currentCalories: 500)
         return WidgetView(entry: entry)

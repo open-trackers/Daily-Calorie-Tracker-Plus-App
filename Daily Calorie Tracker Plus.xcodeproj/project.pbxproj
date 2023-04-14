@@ -10,14 +10,14 @@
 		401CEA552990AAE400D5303F /* PlusSettingsForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401CEA542990AAE400D5303F /* PlusSettingsForm.swift */; };
 		401CEA572990B21600D5303F /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401CEA562990B21600D5303F /* HistoryView.swift */; };
 		402CF94129BBF4D500129305 /* ArchivalDayRun.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402CF94029BBF4D500129305 /* ArchivalDayRun.swift */; };
-		40409E5029E1C8C70099A3CA /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40409E3029E1C0720099A3CA /* WidgetKit.framework */; };
-		40409E5129E1C8C70099A3CA /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40409E3229E1C0720099A3CA /* SwiftUI.framework */; };
-		40409E5429E1C8C70099A3CA /* WidgetDCTBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40409E5329E1C8C70099A3CA /* WidgetDCTBundle.swift */; };
-		40409E5629E1C8C70099A3CA /* WidgetDCT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40409E5529E1C8C70099A3CA /* WidgetDCT.swift */; };
-		40409E5829E1C8C80099A3CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40409E5729E1C8C80099A3CA /* Assets.xcassets */; };
-		40409E5C29E1C8C80099A3CA /* WidgetDCTExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 40409E4F29E1C8C70099A3CA /* WidgetDCTExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		40409E6129E1C9070099A3CA /* DcaltUI in Frameworks */ = {isa = PBXBuildFile; productRef = 40409E6029E1C9070099A3CA /* DcaltUI */; };
 		404A2B6529916BD2006BCFA2 /* TrackerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 404A2B6429916BD2006BCFA2 /* TrackerLib */; };
+		4057022729EA123900F92502 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40409E3029E1C0720099A3CA /* WidgetKit.framework */; };
+		4057022829EA123900F92502 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40409E3229E1C0720099A3CA /* SwiftUI.framework */; };
+		4057022B29EA123900F92502 /* WidgetDCTPBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4057022A29EA123900F92502 /* WidgetDCTPBundle.swift */; };
+		4057022D29EA123900F92502 /* WidgetDCTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4057022C29EA123900F92502 /* WidgetDCTP.swift */; };
+		4057022F29EA123900F92502 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4057022E29EA123900F92502 /* Assets.xcassets */; };
+		4057023329EA123900F92502 /* WidgetDCTPExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 4057022629EA123900F92502 /* WidgetDCTPExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4057023829EA125100F92502 /* DcaltUI in Frameworks */ = {isa = PBXBuildFile; productRef = 4057023729EA125100F92502 /* DcaltUI */; };
 		4058C21629995E4200A1088A /* ServingRunList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4058C21529995E4200A1088A /* ServingRunList.swift */; };
 		4078391B299052E800F4C956 /* PlusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4078391A299052E800F4C956 /* PlusApp.swift */; };
 		40783922299052E800F4C956 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40783921299052E800F4C956 /* ContentView.swift */; };
@@ -36,12 +36,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		40409E5A29E1C8C80099A3CA /* PBXContainerItemProxy */ = {
+		4057023129EA123900F92502 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4078390F299052E800F4C956 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 40409E4E29E1C8C70099A3CA;
-			remoteInfo = WidgetDCTExtension;
+			remoteGlobalIDString = 4057022529EA123900F92502;
+			remoteInfo = WidgetDCTPExtension;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -52,7 +52,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				40409E5C29E1C8C80099A3CA /* WidgetDCTExtension.appex in Embed Foundation Extensions */,
+				4057023329EA123900F92502 /* WidgetDCTPExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -65,12 +65,12 @@
 		402CF94029BBF4D500129305 /* ArchivalDayRun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivalDayRun.swift; sourceTree = "<group>"; };
 		40409E3029E1C0720099A3CA /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		40409E3229E1C0720099A3CA /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		40409E4A29E1C1770099A3CA /* WidgetDCTExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetDCTExtension.entitlements; sourceTree = "<group>"; };
-		40409E4F29E1C8C70099A3CA /* WidgetDCTExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetDCTExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		40409E5329E1C8C70099A3CA /* WidgetDCTBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetDCTBundle.swift; sourceTree = "<group>"; };
-		40409E5529E1C8C70099A3CA /* WidgetDCT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetDCT.swift; sourceTree = "<group>"; };
-		40409E5729E1C8C80099A3CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		40409E5929E1C8C80099A3CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4057022629EA123900F92502 /* WidgetDCTPExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetDCTPExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		4057022A29EA123900F92502 /* WidgetDCTPBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetDCTPBundle.swift; sourceTree = "<group>"; };
+		4057022C29EA123900F92502 /* WidgetDCTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetDCTP.swift; sourceTree = "<group>"; };
+		4057022E29EA123900F92502 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4057023029EA123900F92502 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4057025229EA12E600F92502 /* WidgetDCTPExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetDCTPExtension.entitlements; sourceTree = "<group>"; };
 		4058C21529995E4200A1088A /* ServingRunList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServingRunList.swift; sourceTree = "<group>"; };
 		40783917299052E800F4C956 /* Daily Calorie Tracker Plus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Daily Calorie Tracker Plus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4078391A299052E800F4C956 /* PlusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusApp.swift; sourceTree = "<group>"; };
@@ -89,13 +89,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		40409E4C29E1C8C70099A3CA /* Frameworks */ = {
+		4057022329EA123900F92502 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40409E6129E1C9070099A3CA /* DcaltUI in Frameworks */,
-				40409E5129E1C8C70099A3CA /* SwiftUI.framework in Frameworks */,
-				40409E5029E1C8C70099A3CA /* WidgetKit.framework in Frameworks */,
+				4057023829EA125100F92502 /* DcaltUI in Frameworks */,
+				4057022829EA123900F92502 /* SwiftUI.framework in Frameworks */,
+				4057022729EA123900F92502 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,25 +115,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		40409E5229E1C8C70099A3CA /* WidgetDCT */ = {
+		4057022929EA123900F92502 /* WidgetDCTP */ = {
 			isa = PBXGroup;
 			children = (
-				40409E5329E1C8C70099A3CA /* WidgetDCTBundle.swift */,
-				40409E5529E1C8C70099A3CA /* WidgetDCT.swift */,
-				40409E5729E1C8C80099A3CA /* Assets.xcassets */,
-				40409E5929E1C8C80099A3CA /* Info.plist */,
+				4057022A29EA123900F92502 /* WidgetDCTPBundle.swift */,
+				4057022C29EA123900F92502 /* WidgetDCTP.swift */,
+				4057022E29EA123900F92502 /* Assets.xcassets */,
+				4057023029EA123900F92502 /* Info.plist */,
 			);
-			path = WidgetDCT;
+			path = WidgetDCTP;
 			sourceTree = "<group>";
 		};
 		4078390E299052E800F4C956 = {
 			isa = PBXGroup;
 			children = (
-				40409E4A29E1C1770099A3CA /* WidgetDCTExtension.entitlements */,
+				4057025229EA12E600F92502 /* WidgetDCTPExtension.entitlements */,
 				40F263BB29B0204B00CAA9A2 /* LICENSE */,
 				40F263B929AFF04000CAA9A2 /* README.md */,
 				40783919299052E800F4C956 /* Sources */,
-				40409E5229E1C8C70099A3CA /* WidgetDCT */,
+				4057022929EA123900F92502 /* WidgetDCTP */,
 				40783918299052E800F4C956 /* Products */,
 				40A39ED82990556A00A31B8C /* Frameworks */,
 			);
@@ -143,7 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				40783917299052E800F4C956 /* Daily Calorie Tracker Plus.app */,
-				40409E4F29E1C8C70099A3CA /* WidgetDCTExtension.appex */,
+				4057022629EA123900F92502 /* WidgetDCTPExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -198,24 +198,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		40409E4E29E1C8C70099A3CA /* WidgetDCTExtension */ = {
+		4057022529EA123900F92502 /* WidgetDCTPExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 40409E5D29E1C8C80099A3CA /* Build configuration list for PBXNativeTarget "WidgetDCTExtension" */;
+			buildConfigurationList = 4057023429EA123900F92502 /* Build configuration list for PBXNativeTarget "WidgetDCTPExtension" */;
 			buildPhases = (
-				40409E4B29E1C8C70099A3CA /* Sources */,
-				40409E4C29E1C8C70099A3CA /* Frameworks */,
-				40409E4D29E1C8C70099A3CA /* Resources */,
+				4057022229EA123900F92502 /* Sources */,
+				4057022329EA123900F92502 /* Frameworks */,
+				4057022429EA123900F92502 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = WidgetDCTExtension;
+			name = WidgetDCTPExtension;
 			packageProductDependencies = (
-				40409E6029E1C9070099A3CA /* DcaltUI */,
+				4057023729EA125100F92502 /* DcaltUI */,
 			);
-			productName = WidgetDCTExtension;
-			productReference = 40409E4F29E1C8C70099A3CA /* WidgetDCTExtension.appex */;
+			productName = WidgetDCTPExtension;
+			productReference = 4057022629EA123900F92502 /* WidgetDCTPExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 		40783916299052E800F4C956 /* Daily Calorie Tracker Plus */ = {
@@ -230,7 +230,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				40409E5B29E1C8C80099A3CA /* PBXTargetDependency */,
+				4057023229EA123900F92502 /* PBXTargetDependency */,
 			);
 			name = "Daily Calorie Tracker Plus";
 			packageProductDependencies = (
@@ -255,7 +255,7 @@
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
-					40409E4E29E1C8C70099A3CA = {
+					4057022529EA123900F92502 = {
 						CreatedOnToolsVersion = 14.3;
 					};
 					40783916299052E800F4C956 = {
@@ -282,17 +282,17 @@
 			projectRoot = "";
 			targets = (
 				40783916299052E800F4C956 /* Daily Calorie Tracker Plus */,
-				40409E4E29E1C8C70099A3CA /* WidgetDCTExtension */,
+				4057022529EA123900F92502 /* WidgetDCTPExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		40409E4D29E1C8C70099A3CA /* Resources */ = {
+		4057022429EA123900F92502 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40409E5829E1C8C80099A3CA /* Assets.xcassets in Resources */,
+				4057022F29EA123900F92502 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,12 +308,12 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		40409E4B29E1C8C70099A3CA /* Sources */ = {
+		4057022229EA123900F92502 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40409E5429E1C8C70099A3CA /* WidgetDCTBundle.swift in Sources */,
-				40409E5629E1C8C70099A3CA /* WidgetDCT.swift in Sources */,
+				4057022D29EA123900F92502 /* WidgetDCTP.swift in Sources */,
+				4057022B29EA123900F92502 /* WidgetDCTPBundle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,26 +338,26 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		40409E5B29E1C8C80099A3CA /* PBXTargetDependency */ = {
+		4057023229EA123900F92502 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 40409E4E29E1C8C70099A3CA /* WidgetDCTExtension */;
-			targetProxy = 40409E5A29E1C8C80099A3CA /* PBXContainerItemProxy */;
+			target = 4057022529EA123900F92502 /* WidgetDCTPExtension */;
+			targetProxy = 4057023129EA123900F92502 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		40409E5E29E1C8C80099A3CA /* Debug */ = {
+		4057023529EA123900F92502 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = WidgetDCTExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = WidgetDCTPExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = J735QC5U38;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WidgetDCT/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = WidgetDCT;
+				INFOPLIST_FILE = WidgetDCTP/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WidgetDCTP;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -366,7 +366,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = org.openalloc.dcalt.plus.WidgetDCT;
+				PRODUCT_BUNDLE_IDENTIFIER = org.openalloc.dcalt.plus.WidgetDCTP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -376,18 +376,18 @@
 			};
 			name = Debug;
 		};
-		40409E5F29E1C8C80099A3CA /* Release */ = {
+		4057023629EA123900F92502 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = WidgetDCTExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = WidgetDCTPExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = J735QC5U38;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WidgetDCT/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = WidgetDCT;
+				INFOPLIST_FILE = WidgetDCTP/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WidgetDCTP;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -396,7 +396,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = org.openalloc.dcalt.plus.WidgetDCT;
+				PRODUCT_BUNDLE_IDENTIFIER = org.openalloc.dcalt.plus.WidgetDCTP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -611,11 +611,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		40409E5D29E1C8C80099A3CA /* Build configuration list for PBXNativeTarget "WidgetDCTExtension" */ = {
+		4057023429EA123900F92502 /* Build configuration list for PBXNativeTarget "WidgetDCTPExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				40409E5E29E1C8C80099A3CA /* Debug */,
-				40409E5F29E1C8C80099A3CA /* Release */,
+				4057023529EA123900F92502 /* Debug */,
+				4057023629EA123900F92502 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -668,13 +668,13 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		40409E6029E1C9070099A3CA /* DcaltUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = DcaltUI;
-		};
 		404A2B6429916BD2006BCFA2 /* TrackerLib */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = TrackerLib;
+		};
+		4057023729EA125100F92502 /* DcaltUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DcaltUI;
 		};
 		40A39ECD299054CF00A31B8C /* ZIPFoundation */ = {
 			isa = XCSwiftPackageProductDependency;
