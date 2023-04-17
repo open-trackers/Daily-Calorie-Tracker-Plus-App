@@ -15,6 +15,10 @@
 	</array>
 	<key>com.apple.security.app-sandbox</key>
 	<true/>
+	<key>com.apple.security.application-groups</key>
+	<array>
+		<string>group.org.openalloc.dcalt</string>
+	</array>
 	<key>com.apple.security.files.user-selected.read-only</key>
 	<true/>
 </dict>

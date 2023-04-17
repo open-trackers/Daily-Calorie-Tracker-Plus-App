@@ -163,35 +163,20 @@ struct ServingRunList<Header: View>: View {
             // re-total the calories in both stores (may no longer be present in main)
             if let consumedDay = zDayRun.consumedDay {
                 if let mainStore = manager.getMainStore(viewContext) {
-                    refreshTotalCalories(consumedDay: consumedDay, inStore: mainStore)
+                    // NOTE: this (re-)sums the day's total calories, as well as update the widget
+                    WidgetEntry.refresh(viewContext,
+                                        inStore: mainStore,
+                                        reload: true,
+                                        defaultColor: .accentColor)
                 }
-                if let archiveStore = manager.getArchiveStore(viewContext) {
-                    refreshTotalCalories(consumedDay: consumedDay, inStore: archiveStore)
+                if let archiveStore = manager.getArchiveStore(viewContext),
+                   let zdr = try? ZDayRun.get(viewContext, consumedDay: consumedDay, inStore: archiveStore)
+                {
+                    // just a simple re-sum
+                    _ = zdr.refreshCalorieSum()
                 }
             }
 
-            try viewContext.save()
-        } catch {
-            logger.error("\(#function): \(error.localizedDescription)")
-        }
-    }
-
-    // MARK: - Helpers
-
-    // Re-total the calories for the ZDayRun record, if present in specified store.
-    private func refreshTotalCalories(consumedDay: String, inStore: NSPersistentStore) {
-        logger.debug("\(#function):")
-
-        // will need to update in both mainStore and archiveStore
-        guard let dayrun = try? ZDayRun.get(viewContext, consumedDay: consumedDay, inStore: inStore)
-        else {
-            logger.notice("\(#function): Unable to find ZDayRun record to re-total its calories.")
-            return
-        }
-
-        dayrun.updateCalories()
-
-        do {
             try viewContext.save()
         } catch {
             logger.error("\(#function): \(error.localizedDescription)")

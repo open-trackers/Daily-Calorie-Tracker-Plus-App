@@ -11,6 +11,13 @@
 		401CEA572990B21600D5303F /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401CEA562990B21600D5303F /* HistoryView.swift */; };
 		402CF94129BBF4D500129305 /* ArchivalDayRun.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402CF94029BBF4D500129305 /* ArchivalDayRun.swift */; };
 		404A2B6529916BD2006BCFA2 /* TrackerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 404A2B6429916BD2006BCFA2 /* TrackerLib */; };
+		4057022729EA123900F92502 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40409E3029E1C0720099A3CA /* WidgetKit.framework */; };
+		4057022829EA123900F92502 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40409E3229E1C0720099A3CA /* SwiftUI.framework */; };
+		4057022B29EA123900F92502 /* WidgetDCTPBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4057022A29EA123900F92502 /* WidgetDCTPBundle.swift */; };
+		4057022D29EA123900F92502 /* WidgetDCTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4057022C29EA123900F92502 /* WidgetDCTP.swift */; };
+		4057022F29EA123900F92502 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4057022E29EA123900F92502 /* Assets.xcassets */; };
+		4057023329EA123900F92502 /* WidgetDCTPExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 4057022629EA123900F92502 /* WidgetDCTPExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4057023829EA125100F92502 /* DcaltUI in Frameworks */ = {isa = PBXBuildFile; productRef = 4057023729EA125100F92502 /* DcaltUI */; };
 		4058C21629995E4200A1088A /* ServingRunList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4058C21529995E4200A1088A /* ServingRunList.swift */; };
 		4078391B299052E800F4C956 /* PlusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4078391A299052E800F4C956 /* PlusApp.swift */; };
 		40783922299052E800F4C956 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40783921299052E800F4C956 /* ContentView.swift */; };
@@ -28,10 +35,42 @@
 		40A9158529974320007D684B /* DayRunList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A9158429974320007D684B /* DayRunList.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		4057023129EA123900F92502 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4078390F299052E800F4C956 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4057022529EA123900F92502;
+			remoteInfo = WidgetDCTPExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		40409E4429E1C0730099A3CA /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				4057023329EA123900F92502 /* WidgetDCTPExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		401CEA542990AAE400D5303F /* PlusSettingsForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusSettingsForm.swift; sourceTree = "<group>"; };
 		401CEA562990B21600D5303F /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		402CF94029BBF4D500129305 /* ArchivalDayRun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivalDayRun.swift; sourceTree = "<group>"; };
+		40409E3029E1C0720099A3CA /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		40409E3229E1C0720099A3CA /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		4057022629EA123900F92502 /* WidgetDCTPExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetDCTPExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		4057022A29EA123900F92502 /* WidgetDCTPBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetDCTPBundle.swift; sourceTree = "<group>"; };
+		4057022C29EA123900F92502 /* WidgetDCTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetDCTP.swift; sourceTree = "<group>"; };
+		4057022E29EA123900F92502 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4057023029EA123900F92502 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4057025229EA12E600F92502 /* WidgetDCTPExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetDCTPExtension.entitlements; sourceTree = "<group>"; };
 		4058C21529995E4200A1088A /* ServingRunList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServingRunList.swift; sourceTree = "<group>"; };
 		40783917299052E800F4C956 /* Daily Calorie Tracker Plus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Daily Calorie Tracker Plus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4078391A299052E800F4C956 /* PlusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusApp.swift; sourceTree = "<group>"; };
@@ -50,6 +89,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4057022329EA123900F92502 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4057023829EA125100F92502 /* DcaltUI in Frameworks */,
+				4057022829EA123900F92502 /* SwiftUI.framework in Frameworks */,
+				4057022729EA123900F92502 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		40783914299052E800F4C956 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -66,12 +115,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4057022929EA123900F92502 /* WidgetDCTP */ = {
+			isa = PBXGroup;
+			children = (
+				4057022A29EA123900F92502 /* WidgetDCTPBundle.swift */,
+				4057022C29EA123900F92502 /* WidgetDCTP.swift */,
+				4057022E29EA123900F92502 /* Assets.xcassets */,
+				4057023029EA123900F92502 /* Info.plist */,
+			);
+			path = WidgetDCTP;
+			sourceTree = "<group>";
+		};
 		4078390E299052E800F4C956 = {
 			isa = PBXGroup;
 			children = (
+				4057025229EA12E600F92502 /* WidgetDCTPExtension.entitlements */,
 				40F263BB29B0204B00CAA9A2 /* LICENSE */,
 				40F263B929AFF04000CAA9A2 /* README.md */,
 				40783919299052E800F4C956 /* Sources */,
+				4057022929EA123900F92502 /* WidgetDCTP */,
 				40783918299052E800F4C956 /* Products */,
 				40A39ED82990556A00A31B8C /* Frameworks */,
 			);
@@ -81,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				40783917299052E800F4C956 /* Daily Calorie Tracker Plus.app */,
+				4057022629EA123900F92502 /* WidgetDCTPExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -126,6 +189,8 @@
 		40A39ED82990556A00A31B8C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				40409E3029E1C0720099A3CA /* WidgetKit.framework */,
+				40409E3229E1C0720099A3CA /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -133,6 +198,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		4057022529EA123900F92502 /* WidgetDCTPExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4057023429EA123900F92502 /* Build configuration list for PBXNativeTarget "WidgetDCTPExtension" */;
+			buildPhases = (
+				4057022229EA123900F92502 /* Sources */,
+				4057022329EA123900F92502 /* Frameworks */,
+				4057022429EA123900F92502 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WidgetDCTPExtension;
+			packageProductDependencies = (
+				4057023729EA125100F92502 /* DcaltUI */,
+			);
+			productName = WidgetDCTPExtension;
+			productReference = 4057022629EA123900F92502 /* WidgetDCTPExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		40783916299052E800F4C956 /* Daily Calorie Tracker Plus */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4078392B299052E900F4C956 /* Build configuration list for PBXNativeTarget "Daily Calorie Tracker Plus" */;
@@ -140,10 +225,12 @@
 				40783913299052E800F4C956 /* Sources */,
 				40783914299052E800F4C956 /* Frameworks */,
 				40783915299052E800F4C956 /* Resources */,
+				40409E4429E1C0730099A3CA /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				4057023229EA123900F92502 /* PBXTargetDependency */,
 			);
 			name = "Daily Calorie Tracker Plus";
 			packageProductDependencies = (
@@ -165,9 +252,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1420;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					4057022529EA123900F92502 = {
+						CreatedOnToolsVersion = 14.3;
+					};
 					40783916299052E800F4C956 = {
 						CreatedOnToolsVersion = 14.2;
 					};
@@ -192,11 +282,20 @@
 			projectRoot = "";
 			targets = (
 				40783916299052E800F4C956 /* Daily Calorie Tracker Plus */,
+				4057022529EA123900F92502 /* WidgetDCTPExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4057022429EA123900F92502 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4057022F29EA123900F92502 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		40783915299052E800F4C956 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -209,6 +308,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4057022229EA123900F92502 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4057022D29EA123900F92502 /* WidgetDCTP.swift in Sources */,
+				4057022B29EA123900F92502 /* WidgetDCTPBundle.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		40783913299052E800F4C956 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -229,7 +337,76 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		4057023229EA123900F92502 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4057022529EA123900F92502 /* WidgetDCTPExtension */;
+			targetProxy = 4057023129EA123900F92502 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		4057023529EA123900F92502 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = WidgetDCTPExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 6;
+				DEVELOPMENT_TEAM = J735QC5U38;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WidgetDCTP/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WidgetDCTP;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.4;
+				PRODUCT_BUNDLE_IDENTIFIER = org.openalloc.dcalt.plus.WidgetDCTP;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4057023629EA123900F92502 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = WidgetDCTPExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 6;
+				DEVELOPMENT_TEAM = J735QC5U38;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WidgetDCTP/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WidgetDCTP;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.4;
+				PRODUCT_BUNDLE_IDENTIFIER = org.openalloc.dcalt.plus.WidgetDCTP;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		40783929299052E900F4C956 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -263,6 +440,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -321,6 +499,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -342,11 +521,13 @@
 		4078392C299052E900F4C956 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Sources/App.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "Sources/Preview\\ Content";
 				DEVELOPMENT_TEAM = J735QC5U38;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -369,7 +550,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = org.openalloc.dcalt.plus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -385,11 +566,13 @@
 		4078392D299052E900F4C956 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Sources/App.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "Sources/Preview\\ Content";
 				DEVELOPMENT_TEAM = J735QC5U38;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -412,7 +595,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = org.openalloc.dcalt.plus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -428,6 +611,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4057023429EA123900F92502 /* Build configuration list for PBXNativeTarget "WidgetDCTPExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4057023529EA123900F92502 /* Debug */,
+				4057023629EA123900F92502 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		40783912299052E800F4C956 /* Build configuration list for PBXProject "Daily Calorie Tracker Plus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -479,6 +671,10 @@
 		404A2B6429916BD2006BCFA2 /* TrackerLib */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = TrackerLib;
+		};
+		4057023729EA125100F92502 /* DcaltUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DcaltUI;
 		};
 		40A39ECD299054CF00A31B8C /* ZIPFoundation */ = {
 			isa = XCSwiftPackageProductDependency;
