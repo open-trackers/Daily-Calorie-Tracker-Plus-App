@@ -34,7 +34,7 @@ struct DayRunList: View {
 
     // MARK: - Parameters
 
-    internal init(archiveStore: NSPersistentStore) {
+    init(archiveStore: NSPersistentStore) {
         let predicate = ZDayRun.getPredicate(userRemoved: false)
         let sortDescriptors = ZDayRun.byConsumedDay(ascending: false)
         let request = makeRequest(ZDayRun.self,
